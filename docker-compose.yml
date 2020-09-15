@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  vault:
+    image: vault:1.5.3
+    cap_add:
+    - "IPC_LOCK"
+    ports:
+    - "8200:8200"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: "TEST"
+      VAULT_TOKEN: "TEST"
+  database:
+    image: "postgres:9.6.12"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
